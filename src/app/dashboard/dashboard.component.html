@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="main-content">
+    <div class="header-content">
+        <div class="emp-detail-text">
+            Employee Details <div class="emp-count" >{{this.countNumber}}</div>
+        </div>
+        <button mat-button (click) = "btnClick()"><img src="../../assets/add-24px.svg"> Add user</button>
+    </div>
+    <div class="table-main">
+        <table class="table" id="display">
+            <tr>
+                <th>Id</th>
+                <th>Profile pic</th>
+                <th>{{this.name}}</th>
+                <th>{{this.gender}}</th>
+                <th>{{this.department}}</th>
+                <th>{{this.salary}}</th>
+                <th>{{this.note}}</th>
+                <th>{{this.startDate}}</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let employee of allEmp">
+                <td>{{employee.employeeId}}</td>
+                <td><img [src]="employee.profilePic" class="pic"></td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.department}}</td>
+                <td>{{employee.salary}}</td>
+                <td>{{employee.note}}</td>
+                <td>{{employee.startDate | date}}</td>
+                <td class="action-icon">
+                    <mat-icon (click)="editById(employee.employeeId)">edit</mat-icon>
+                    <mat-icon (click)="deleteEmp(employee.employeeId)" >delete_outline</mat-icon>
+                    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" (click)="editById(employee.employeeId)" ></mat-icon> -->
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>
